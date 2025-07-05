@@ -36,7 +36,7 @@ export default function CameraOverlay({
   };
 
   return (
-    <div className="h-full w-full flex flex-col overflow-hidden absolute top-0 left-0 z-2 bg-black bg-opacity-50">
+    <div className="h-full w-full flex flex-col overflow-hidden absolute top-0 left-0 bottom-0 right-0 z-2 bg-black bg-opacity-50">
       <div className="relative h-full w-full flex flex-col justify-center">
         <video
           ref={videoRef}
@@ -44,7 +44,7 @@ export default function CameraOverlay({
           playsInline
           muted
           disablePictureInPicture
-          className="inset-0 w-full h-auto object-cover"
+          className="fixed top-0 left-0 bottom-0 right-0 min-h-dvh min-w-dvw inset-0 object-cover"
         />
         {/* ガイド */}
         <div

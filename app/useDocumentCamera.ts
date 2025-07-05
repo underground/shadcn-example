@@ -116,14 +116,33 @@ export function useDocumentCamera(options?: Options) {
       video.videoWidth
     );
 
-    const scaleX = video.videoWidth / videoRect.width;
-    const scaleY = video.videoHeight / videoRect.height;
+    // 実際の映像のアスペクト比
+    const videoAspectRatio = video.videoWidth / video.videoHeight;
+    // 表示されている映像のアスペクト比
+    const containerAspectRatio = videoRect.width / videoRect.height;
 
-    console.log("scaleX", scaleX, "scaleY", scaleY);
+    let offsetX = 0;
+    let offsetY = 0;
+    let displayedVideoWidth = videoRect.width;
+    let displayedVideoHeight = videoRect.height;
 
-    const cropX = (guideRect.left - videoRect.left) * scaleX;
-    const cropY = (guideRect.top - videoRect.top) * scaleY;
-    console.log("cropX", cropX, "cropY", cropY);
+    if (containerAspectRatio > videoAspectRatio) {
+      // 横幅が広すぎて上下がトリミングされている場合
+      displayedVideoHeight = videoRect.width / videoAspectRatio;
+      offsetY = (displayedVideoHeight - videoRect.height) / 2;
+    } else {
+      // 縦幅が高すぎて左右がトリミングされている場合
+      displayedVideoWidth = videoRect.height * videoAspectRatio;
+      offsetX = (displayedVideoWidth - videoRect.width) / 2;
+    }
+
+    // scaleX, scaleYは実動画ピクセル / 表示されている映像のサイズ（トリミング後）
+    const scaleX = video.videoWidth / displayedVideoWidth;
+    const scaleY = video.videoHeight / displayedVideoHeight;
+
+    // ガイド枠の位置を映像の座標系に変換（トリミング領域考慮）
+    const cropX = (guideRect.left - videoRect.left + offsetX) * scaleX;
+    const cropY = (guideRect.top - videoRect.top + offsetY) * scaleY;
 
     const cropWidth = guideRect.width * scaleX;
     const cropHeight = guideRect.height * scaleY;
