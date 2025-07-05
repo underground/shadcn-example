@@ -44,7 +44,7 @@ export default function CameraOverlay({
           playsInline
           muted
           disablePictureInPicture
-          className="inset-0 w-full h-auto object-contain"
+          className="inset-0 w-full h-auto object-cover"
         />
         {/* ガイド */}
         <div
