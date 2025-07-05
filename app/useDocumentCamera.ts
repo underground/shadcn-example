@@ -68,7 +68,7 @@ export function useDocumentCamera(options?: Options) {
 
         const stream =
           (await getCameraStream(highResConstraints)) ??
-          (await getCameraStream(lowResConstraints, { shouldThrow: true }));
+          (await getCameraStream(lowResConstraints, true));
 
         const video = videoRef.current;
         if (video) {
