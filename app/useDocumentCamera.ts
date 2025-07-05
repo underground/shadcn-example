@@ -77,7 +77,6 @@ export function useDocumentCamera(options?: Options) {
         }
       } catch (err: unknown) {
         let message = "カメラの起動に失敗しました";
-        console.error(err?.name);
         if (err instanceof DOMException) {
           if (err.name === "NotAllowedError") {
             message = "カメラの使用が許可されていません";
@@ -145,7 +144,7 @@ export function useDocumentCamera(options?: Options) {
       cropHeight
     );
 
-    return new Promise<File>((resolve) => {
+    return new Promise<File | null>((resolve) => {
       canvas.toBlob((blob) => {
         if (blob) {
           const file = new File([blob], "captured.png", { type: "image/png" });
