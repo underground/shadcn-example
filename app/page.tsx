@@ -11,7 +11,7 @@ export default function LicensePhotoCapture() {
 
   // 撮影開始画面
   return (
-    <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-4">
+    <>
       {showCamera && (
         <CameraOverlay
           aspectRatio={1.4}
@@ -45,6 +45,6 @@ export default function LicensePhotoCapture() {
           撮影
         </Button>
       </div>
-    </div>
+    </>
   );
 }
