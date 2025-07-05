@@ -52,6 +52,7 @@ export default function CameraOverlay({
           className="absolute left-1/2 top-1/2 border-1 border-dashed pointer-events-none"
           style={{
             width: "90vw",
+            maxHeight: "90vh",
             aspectRatio: `${aspectRatio}`,
             transform: "translate(-50%, -50%)",
           }}
