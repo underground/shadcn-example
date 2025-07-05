@@ -23,7 +23,7 @@ const highResConstraints: MediaStreamConstraints = {
   video: {
     facingMode: { ideal: "environment" },
     height: { ideal: 1920, max: 2560 },
-    width: { ideal: 1080, max: 1920 },
+    // width: { ideal: 1080, max: 1920 },
   },
   audio: false,
 };
@@ -32,7 +32,7 @@ const lowResConstraints: MediaStreamConstraints = {
   video: {
     facingMode: { ideal: "environment" },
     height: 640,
-    width: 480,
+    // width: 480,
   },
   audio: false,
 };
