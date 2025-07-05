@@ -49,7 +49,7 @@ export function useDocumentCamera(options?: Options) {
     if (stream && stream instanceof MediaStream) {
       stream.getTracks().forEach((track) => {
         if (track.readyState == "live" && track.kind === "video") {
-          console.log("stop track", track.readyState, track.kind);
+          console.log("stop track", track);
           track.stop();
         }
         // track.stop();
