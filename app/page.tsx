@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import CameraOverlay from "@/app/CameraOverlay";
@@ -8,6 +8,18 @@ import CameraOverlay from "@/app/CameraOverlay";
 export default function LicensePhotoCapture() {
   const [showCamera, setShowCamera] = useState(true);
   const [capturedImage, setCapturedImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handler = (event: BeforeUnloadEvent) => {
+      console.log("beforeunload");
+      event.preventDefault();
+      event.returnValue = "custom message";
+    };
+    window.addEventListener("beforeunload", handler);
+    return () => {
+      window.removeEventListener("beforeunload", handler);
+    };
+  }, []);
 
   // 撮影開始画面
   return (
