@@ -1,14 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import CameraOverlay from "@/app/CameraOverlay";
+
+const isDev = true;
 
 export default function LicensePhotoCapture() {
   const [showCamera, setShowCamera] = useState(true);
   const [file, setFile] = useState<File | null>(null);
   const [capturedImage, setCapturedImage] = useState<string | null>(null);
+
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
     const handler = (event: BeforeUnloadEvent) => {
@@ -25,7 +29,24 @@ export default function LicensePhotoCapture() {
   // 撮影開始画面
   return (
     <>
-      {showCamera && (
+      {isDev && (
+        <input
+          type="file"
+          accept="image/jpeg, image/png, image/webp, image/heic, image/heif"
+          capture="environment"
+          ref={inputRef}
+          className="hidden"
+          onChange={(e) => {
+            const file = e.target.files?.[0];
+            if (file) {
+              console.log("Input file:", file);
+              setFile(file);
+              setCapturedImage(URL.createObjectURL(file));
+            }
+          }}
+        />
+      )}
+      {!isDev && showCamera && (
         <CameraOverlay
           aspectRatio={1.4}
           onCapture={(file) => {
