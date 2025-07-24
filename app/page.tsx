@@ -32,8 +32,7 @@ export default function LicensePhotoCapture() {
       {isDev && (
         <input
           type="file"
-          accept="image/*"
-          // accept="image/jpeg, image/png, image/webp, image/heic, image/heif"
+          accept="image/jpeg, image/png, image/webp, image/heic, image/heif"
           capture="environment"
           ref={inputRef}
           className="hidden"
