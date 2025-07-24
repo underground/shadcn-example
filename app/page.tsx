@@ -32,7 +32,8 @@ export default function LicensePhotoCapture() {
       {isDev && (
         <input
           type="file"
-          accept="image/jpeg, image/png, image/webp, image/heic, image/heif"
+          accept="image/*"
+          // accept="image/jpeg, image/png, image/webp, image/heic, image/heif"
           capture="environment"
           ref={inputRef}
           className="hidden"
@@ -76,6 +77,7 @@ export default function LicensePhotoCapture() {
           onClick={() => {
             setCapturedImage(null);
             if (isDev) {
+              console.log("Opening file input", inputRef.current);
               inputRef.current?.click();
             } else {
               setShowCamera(true);
