@@ -75,7 +75,11 @@ export default function LicensePhotoCapture() {
         <Button
           onClick={() => {
             setCapturedImage(null);
-            setShowCamera(true);
+            if (isDev) {
+              inputRef.current?.click();
+            } else {
+              setShowCamera(true);
+            }
           }}
         >
           撮影
