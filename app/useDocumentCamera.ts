@@ -166,12 +166,12 @@ export function useDocumentCamera(options?: Options) {
     return new Promise<File | null>((resolve) => {
       canvas.toBlob((blob) => {
         if (blob) {
-          const file = new File([blob], "captured.png", { type: "image/png" });
+          const file = new File([blob], "captured.jpg", { type: "image/jpeg" });
           resolve(file);
         } else {
           resolve(null);
         }
-      }, "image/png");
+      }, "image/jpeg");
     });
   };
 
