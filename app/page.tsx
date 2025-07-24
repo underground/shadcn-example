@@ -28,6 +28,7 @@ export default function LicensePhotoCapture() {
         <CameraOverlay
           aspectRatio={1.4}
           onCapture={(file) => {
+            console.log("Captured file:", file);
             setCapturedImage(URL.createObjectURL(file));
             setShowCamera(false);
           }}
