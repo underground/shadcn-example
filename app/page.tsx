@@ -7,6 +7,7 @@ import CameraOverlay from "@/app/CameraOverlay";
 
 export default function LicensePhotoCapture() {
   const [showCamera, setShowCamera] = useState(true);
+  const [file, setFile] = useState<File | null>(null);
   const [capturedImage, setCapturedImage] = useState<string | null>(null);
 
   useEffect(() => {
@@ -30,6 +31,7 @@ export default function LicensePhotoCapture() {
           onCapture={(file) => {
             console.log("Captured file:", file);
             setCapturedImage(URL.createObjectURL(file));
+            setFile(file);
             setShowCamera(false);
           }}
           onClose={() => {
@@ -48,7 +50,7 @@ export default function LicensePhotoCapture() {
           />
         </div>
       )}
-      <div>
+      <div className="flex items-center gap-2">
         <Button
           onClick={() => {
             setCapturedImage(null);
@@ -57,6 +59,11 @@ export default function LicensePhotoCapture() {
         >
           撮影
         </Button>
+        {file && (
+          <span className="text-sm text-gray-500">
+            {file.name} {file.type} ({(file.size / 1024).toFixed(2)} KB)
+          </span>
+        )}
       </div>
     </>
   );
