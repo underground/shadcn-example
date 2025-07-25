@@ -92,7 +92,7 @@ export default function LicensePhotoCapture() {
         </Button>
         {file && (
           <span className="text-sm text-gray-500">
-            {`${file.name} ${file.type} (${((file.size / 1024) * 1024).toFixed(
+            {`${file.name} ${file.type} (${((file.size / (1024 * 1024)).toFixed(
               2
             )} MB) ${bitmap?.width ?? ""}x${bitmap?.height ?? ""} px`}
           </span>
