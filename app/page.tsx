@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import CameraOverlay from "@/app/CameraOverlay";
@@ -10,6 +10,7 @@ const isDev = true;
 export default function LicensePhotoCapture() {
   const [showCamera, setShowCamera] = useState(true);
   const [file, setFile] = useState<File | null>(null);
+  const [bitmap, setBitmap] = useState<ImageBitmap | null>(null);
   const [capturedImage, setCapturedImage] = useState<string | null>(null);
 
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -42,6 +43,7 @@ export default function LicensePhotoCapture() {
               console.log("Input file:", file);
               setFile(file);
               setCapturedImage(URL.createObjectURL(file));
+              createImageBitmap(file).then(setBitmap);
             }
           }}
         />
@@ -87,7 +89,9 @@ export default function LicensePhotoCapture() {
         </Button>
         {file && (
           <span className="text-sm text-gray-500">
-            {file.name} {file.type} ({(file.size / 1024).toFixed(2)} KB)
+            {`${file.name} ${file.type} (${((file.size / 1024) * 1024).toFixed(
+              2
+            )} MB) ${bitmap?.width ?? ""}x${bitmap?.height ?? ""} px`}
           </span>
         )}
       </div>
