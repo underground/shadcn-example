@@ -43,7 +43,10 @@ export default function LicensePhotoCapture() {
               console.log("Input file:", file);
               setFile(file);
               setCapturedImage(URL.createObjectURL(file));
-              createImageBitmap(file).then(setBitmap);
+              createImageBitmap(file).then((bitmap) => {
+                console.log("Bitmap created:", bitmap.width, bitmap.height);
+                setBitmap(bitmap);
+              });
             }
           }}
         />
