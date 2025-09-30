@@ -1,5 +1,4 @@
 import { Input } from "@/components/ui/input";
-import clsx from "clsx";
 
 export default function Page() {
   return (
