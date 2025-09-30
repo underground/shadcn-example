@@ -39,7 +39,6 @@ export default function Page() {
     bg-black text-white
     shadow-2xl
     min-h-[60px]
-    max-h-[60px]
     h-[60px]
     pb-[max(0px,env(safe-area-inset-bottom))]
   "
