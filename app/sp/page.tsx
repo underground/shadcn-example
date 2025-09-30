@@ -10,29 +10,12 @@ export default function Page() {
         Header
       </header>
       <main
-        className=" overflow-auto px-4 py-3 min-h-0 scroll-padding-bottom-[84px]"
+        className=" overflow-auto px-4 py-3 min-h-0 scroll-padding-bottom-[84px] gap-2"
         // className="flex flex-col flex-auto overflow-auto no-scrollbar overflow-x-hidden gap-2 h-full p-3"
       >
-        <Input placeholder="1" />
-        <Input placeholder="2" />
-        <Input placeholder="3" />
-        <Input placeholder="4" />
-        <Input placeholder="5" />
-        <Input placeholder="6" />
-        <Input placeholder="7" />
-        <Input placeholder="8" />
-        <Input placeholder="9" />
-        <Input placeholder="10" />
-        <Input placeholder="11" />
-        <Input placeholder="12" />
-        <Input placeholder="13" />
-        <Input placeholder="14" />
-        <Input placeholder="15" />
-        <Input placeholder="16" />
-        <Input placeholder="17" />
-        <Input placeholder="18" />
-        <Input placeholder="19" />
-        <Input placeholder="20" />
+        {Array.from({ length: 30 }).map((_, i) => (
+          <Input key={i} placeholder={`input ${i + 1}`} />
+        ))}
       </main>
       <footer
         className="
