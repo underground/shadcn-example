@@ -41,6 +41,7 @@ export default function Page() {
     min-h-[60px]
     max-h-[60px]
     h-[60px]
+    pb-[max(0px,env(safe-area-inset-bottom))]
   "
         // className="bg-black text-white p-3 mt-auto text-center"
       >
