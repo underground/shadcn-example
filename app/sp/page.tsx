@@ -35,7 +35,7 @@ export default function Page() {
       </main>
       <footer
         className="
-    sticky bottom-0 inset-x-0
+    fixed bottom-0 inset-x-0
     bg-black text-white
     shadow-2xl
     min-h-[60px]
