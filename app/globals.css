@@ -120,3 +120,15 @@
     @apply bg-background text-foreground;
   }
 }
+
+main:has(:where(input, textarea, [contenteditable="true"]):focus) {
+  /* footer(56px想定) + safe-area */
+  padding-bottom: max(56px, env(safe-area-inset-bottom));
+}
+
+/* 入力要素はフォーカススクロール時の“下の余白”を自前で確保 */
+input,
+textarea,
+[contenteditable="true"] {
+  scroll-margin-bottom: max(56px, env(safe-area-inset-bottom));
+}
