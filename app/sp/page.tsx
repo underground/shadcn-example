@@ -20,9 +20,9 @@ export default function Page() {
       <footer
         className="
     sticky bottom-0 inset-x-0
-    bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/60 text-black
+    bg-black text-white
     px-4 py-3 shadow-2xl
-    pb-[max(0px,env(safe-area-inset-bottom))]
+    h-[50px]
   "
         // className="bg-black text-white p-3 mt-auto text-center"
       >
