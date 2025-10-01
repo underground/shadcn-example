@@ -30,7 +30,7 @@ export default function Page() {
         // className="flex flex-col flex-auto overflow-auto no-scrollbar overflow-x-hidden gap-2 h-full p-3"
       >
         {Array.from({ length: 30 }).map((_, i) => (
-          <Input key={i} placeholder={`input ${i + 1}`} />
+          <Input key={i} placeholder={`input ${i + 1}`} className="mb-3" />
         ))}
       </main>
       <footer
