@@ -47,7 +47,15 @@ export default function Page() {
           //   h-[60px]
           //   pb-[max(0px,env(safe-area-inset-bottom))]
           // "
-          className="bg-black text-white p-3 mt-auto text-center"
+          className="
+          sticky bottom-0 z-10
+          bg-black text-white
+          shadow-2xl
+          min-h-[60px]
+          h-[60px]
+          pb-[max(0px,env(safe-area-inset-bottom))]
+        "
+          // className="bg-black text-white p-3 mt-auto text-center"
         >
           Footer
         </footer>
