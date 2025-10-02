@@ -6,8 +6,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  viewportFit: "cover",
-  interactiveWidget: "resizes-content",
+  // viewportFit: "cover",
+  // interactiveWidget: "resizes-content",
 };
 
 export const metadata: Metadata = {
