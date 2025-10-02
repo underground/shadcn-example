@@ -2,7 +2,7 @@ import { Input } from "@/components/ui/input";
 import clsx from "clsx";
 
 export default function Page() {
-  const showFooter = false;
+  const showFooter = true;
   return (
     <form
       // className={clsx(
@@ -31,7 +31,7 @@ export default function Page() {
         //   "min-h-0" // flex 子がはみ出さないように必須
         // )}
         // className="flex flex-col flex-auto overflow-auto no-scrollbar overflow-x-hidden gap-2 h-full p-3"
-        className="flex-1 no-scrollbar gap-2 h-full p-3"
+        className="flex-1 no-scrollbar overflow-x-hidden gap-2 h-full p-3"
       >
         {Array.from({ length: 30 }).map((_, i) => (
           <Input key={i} placeholder={`input ${i + 1}`} className="mb-3" />
