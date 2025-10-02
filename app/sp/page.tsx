@@ -12,12 +12,13 @@ export default function Page() {
       //   // ヘッダー / メイン / フッター の3行
       //   "grid grid-rows-[auto,1fr,auto]"
       // )}
-      className="h-full w-full flex flex-col overflow-hidden fixed top-0 bottom-0 left-0 right-0"
+      // className="h-full w-full flex flex-col overflow-hidden fixed top-0 bottom-0 left-0 right-0"
+      className="min-h-[100svh] w-full flex flex-col"
     >
       <header
         className={clsx(
           "flex flex-col w-full",
-          // "sticky top-0 z-10 flex flex-col w-full",
+          "sticky top-0 z-10 flex flex-col w-full",
           "h-[50px] bg-black text-white flex items-center px-4 shadow"
         )}
       >
@@ -29,7 +30,8 @@ export default function Page() {
         //   "flex flex-col gap-2", // 入力の間に gap-2
         //   "min-h-0" // flex 子がはみ出さないように必須
         // )}
-        className="flex flex-col flex-auto overflow-auto no-scrollbar overflow-x-hidden gap-2 h-full p-3"
+        // className="flex flex-col flex-auto overflow-auto no-scrollbar overflow-x-hidden gap-2 h-full p-3"
+        className="flex-1 no-scrollbar gap-2 h-full p-3"
       >
         {Array.from({ length: 30 }).map((_, i) => (
           <Input key={i} placeholder={`input ${i + 1}`} className="mb-3" />
