@@ -145,7 +145,7 @@ export function useDocumentCamera(options?: Options) {
     const scaleY = video.videoHeight / displayedVideoHeight;
 
     // ガイド枠の位置を映像の座標系に変換（トリミング領域考慮）
-    const extra = toPx(2);
+    const extra = toPx(4);
     const cropX = (guideRect.left - videoRect.left + offsetX - extra) * scaleX;
     const cropY = (guideRect.top - videoRect.top + offsetY - extra) * scaleY;
 
