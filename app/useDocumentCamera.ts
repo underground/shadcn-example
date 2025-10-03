@@ -146,11 +146,24 @@ export function useDocumentCamera(options?: Options) {
 
     // ガイド枠の位置を映像の座標系に変換（トリミング領域考慮）
     const extra = toPx(6);
-    const cropX = (guideRect.left - videoRect.left + offsetX - extra) * scaleX;
-    const cropY = (guideRect.top - videoRect.top + offsetY - extra) * scaleY;
+    // const cropX = (guideRect.left - videoRect.left + offsetX - extra) * scaleX;
+    // const cropY = (guideRect.top - videoRect.top + offsetY - extra) * scaleY;
 
-    const cropWidth = (guideRect.width + extra * 2) * scaleX;
-    const cropHeight = (guideRect.height + extra * 2) * scaleY;
+    // const cropWidth = (guideRect.width + extra * 2) * scaleX;
+    // const cropHeight = (guideRect.height + extra * 2) * scaleY;
+
+    const rawCropX =
+      (guideRect.left - videoRect.left + offsetX - extra) * scaleX;
+    const rawCropY = (guideRect.top - videoRect.top + offsetY - extra) * scaleY;
+
+    const rawCropWidth = (guideRect.width + extra * 2) * scaleX;
+    const rawCropHeight = (guideRect.height + extra * 2) * scaleY;
+
+    // トリミング範囲が映像範囲サイズを超えないように調整
+    const cropX = Math.max(0, rawCropX);
+    const cropY = Math.max(0, rawCropY);
+    const cropWidth = Math.min(video.videoWidth - cropX, rawCropWidth);
+    const cropHeight = Math.min(video.videoHeight - cropY, rawCropHeight);
 
     canvas.width = cropWidth;
     canvas.height = cropHeight;
