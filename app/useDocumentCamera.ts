@@ -1,5 +1,9 @@
 import { useEffect, useRef } from "react";
 
+const toPx = (vw: number): number => {
+  return (window.innerWidth * vw) / 100;
+};
+
 type Options = {
   onError?: (message: string) => void;
 };
@@ -141,11 +145,12 @@ export function useDocumentCamera(options?: Options) {
     const scaleY = video.videoHeight / displayedVideoHeight;
 
     // ガイド枠の位置を映像の座標系に変換（トリミング領域考慮）
-    const cropX = (guideRect.left - videoRect.left + offsetX) * scaleX;
-    const cropY = (guideRect.top - videoRect.top + offsetY) * scaleY;
+    const extra = toPx(2);
+    const cropX = (guideRect.left - videoRect.left + offsetX - extra) * scaleX;
+    const cropY = (guideRect.top - videoRect.top + offsetY - extra) * scaleY;
 
-    const cropWidth = guideRect.width * scaleX;
-    const cropHeight = guideRect.height * scaleY;
+    const cropWidth = (guideRect.width + extra * 2) * scaleX;
+    const cropHeight = (guideRect.height + extra * 2) * scaleY;
 
     canvas.width = cropWidth;
     canvas.height = cropHeight;

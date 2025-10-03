@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import CameraOverlay from "@/app/CameraOverlay";
 
-const isDev = true;
+const isDev = false;
 
 export default function LicensePhotoCapture() {
   const [showCamera, setShowCamera] = useState(true);
