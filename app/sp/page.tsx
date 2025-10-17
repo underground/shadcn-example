@@ -2,7 +2,6 @@ import { Input } from "@/components/ui/input";
 import clsx from "clsx";
 
 export default function Page() {
-  const showFooter = true;
   return (
     <form
       // className={clsx(
@@ -37,29 +36,27 @@ export default function Page() {
           <Input key={i} placeholder={`input ${i + 1}`} className="mb-3" />
         ))}
       </main>
-      {showFooter && (
-        <footer
-          //       className="
-          //   fixed bottom-0 inset-x-0
-          //   bg-black text-white
-          //   shadow-2xl
-          //   min-h-[60px]
-          //   h-[60px]
-          //   pb-[max(0px,env(safe-area-inset-bottom))]
-          // "
-          //   className="
-          //   sticky bottom-0 z-10
-          //   bg-black text-white
-          //   shadow-2xl
-          //   min-h-[60px]
-          //   h-[60px]
-          //   pb-[max(0px,env(safe-area-inset-bottom))]
-          // "
-          className="bg-black text-white p-3 mt-auto text-center"
-        >
-          Footer
-        </footer>
-      )}
+      <footer
+        //       className="
+        //   fixed bottom-0 inset-x-0
+        //   bg-black text-white
+        //   shadow-2xl
+        //   min-h-[60px]
+        //   h-[60px]
+        //   pb-[max(0px,env(safe-area-inset-bottom))]
+        // "
+        //   className="
+        //   sticky bottom-0 z-10
+        //   bg-black text-white
+        //   shadow-2xl
+        //   min-h-[60px]
+        //   h-[60px]
+        //   pb-[max(0px,env(safe-area-inset-bottom))]
+        // "
+        className="bg-black text-white p-3 mt-auto text-center"
+      >
+        Footer
+      </footer>
     </form>
   );
 }
